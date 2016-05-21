@@ -7,7 +7,7 @@ public class ufo extends JApplet implements ActionListener{
 	JButton btnPlayGame,btnStopGame,btnQuit;
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
-	int start = 0 , x=0;
+	int start = 0 , x=0 , randomX=0 , randomY=0 , xMax=780 , xMin =1, xSpeed=80 , size = 40;
 	private ImageIcon m1;
 	private Timer t ;
 	//Picture image1;
@@ -28,8 +28,6 @@ public class ufo extends JApplet implements ActionListener{
 			start =1;
 			System.out.println("god");
 			t.start();
-			
-			
 		}else{
 			fw();
 			repaint();
@@ -37,7 +35,9 @@ public class ufo extends JApplet implements ActionListener{
 	}
 	public void init()
 	{
-		t = new Timer(100,this);
+		randomY = (int )(Math.random() * 1024 + 100);
+	    randomY = (int )(Math.random() * 786 + 10);
+		t = new Timer(1000,this);
 		Container c = getContentPane();
 		//setContentPane(new  JLabel(new ImageIcon("bg.gif")));
 		getContentPane().setLayout(null); 
@@ -79,23 +79,24 @@ public class ufo extends JApplet implements ActionListener{
 		super.paint(g);
 		g.setColor(Color.BLUE);
 		g.drawRect(10, 70, 1000, 30);
-		
 		g.setColor(Color.BLUE);
 		g.drawRect(10, 110, 1000, 630);
-		
-		myLogo.paintIcon(this,g,10,110);
-		
+//		myLogo.paintIcon(this,g,10,110);
 		if(start==1){
-			for(int i=0;i<20;i++){
-				int randomY = (int )(Math.random() * 1024 + 100);
-				int randomX = (int )(Math.random() * 786 + 10);
-				m1.paintIcon(this,g,randomX+x,randomY);
-			}
+		m1.paintIcon(this,g,x,randomY);
+		
 		}	
 	}
 	public void fw()
 	{
-		x = x+5;
-
+		 x = x + xSpeed;
+		 if (x < xMin) {
+		 x = xMin;
+		 xSpeed = -xSpeed;
+		 }
+		 else if (x+size > xMax) {
+		 x = xMax - size;
+		 xSpeed = -xSpeed;
+		 }
 	}
 }
