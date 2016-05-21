@@ -3,18 +3,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 public class ufo extends JApplet implements ActionListener{
-
+	int Times =40 ;
 	JButton btnPlayGame,btnStopGame,btnQuit;
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
-	int start = 0 , x=0 , randomX=0 , randomY=0 , xMax=780 , xMin =1, xSpeed=80 , size = 40;
-	int y=0 , ySpeed = 0 , yMax = 1024 , yMin =1; 
+	int start = 0 , x=0 , rX1=0 , rY1=0 , xMax1=980 , xMin1 =10, xSpeed1=80 , size1 = 40;
+	int y=0 , ySpeed1 = 80 , yMax1 = 730 , yMin1 =110; 
+	int rX2=0 , rY2=0 , xMax2=980 , xMin2 =10 , yMin2=110, yMax2=730 , xSpeed2=80, ySpeed2=80 , size2 = 40 ;
+	int rX3=0 , rY3=0 , xMax3=980 , xMin3 =10 , yMin3=110, yMax3=730 , xSpeed3=80, ySpeed3=80 , size3 = 40 ;
+	int rX4=0 , rY4=0 , xMax4=980 , xMin4 =10 , yMin4=110, yMax4=730 , xSpeed4=80, ySpeed4=80 , size4 = 40 ;
+	int rX5=0 , rY5=0 , xMax5=980 , xMin5 =10 , yMin5=110, yMax5=730 , xSpeed5=80, ySpeed5=80 , size5 = 40 ;
+	int rX6=0 , rY6=0 , xMax6=980 , xMin6 =10 , yMin6=110, yMax6=730 , xSpeed6=80, ySpeed6=80 , size6 = 40 ;
+	int rX7=0 , rY7=0 , xMax7=980 , xMin7 =10 , yMin7=110, yMax7=730 , xSpeed7=80, ySpeed7=80 , size7 = 40 ;
+	int rX8=0 , rY8=0 , xMax8=980 , xMin8 =10 , yMin8=110, yMax8=730 , xSpeed8=80, ySpeed8=80 , size8 = 40 ;
+	int rX9=0 , rY9=0 , xMax9=980 , xMin9 =10 , yMin9=110, yMax9=730 , xSpeed9=80, ySpeed9=80 , size9 = 40 ;
 	private ImageIcon m1;
-	private Timer t ;
+	private Timer t;
 	//Picture image1;
-	
 	ImageIcon myLogo = new ImageIcon("bg.gif");
-	
 	public static void main(String[] args) {
 		ufo g = new ufo();
 		g.setSize(1024,768);
@@ -36,8 +42,24 @@ public class ufo extends JApplet implements ActionListener{
 	}
 	public void init()
 	{
-		randomY = (int )(Math.random() * 1024 + 100);
-	    randomY = (int )(Math.random() * 786 + 10);
+		rX1 = (int )(Math.random() * 1024 + 100);
+	    rY1 = (int )(Math.random() * 786 + 10);
+		rX2 = (int )(Math.random() * 1024 + 100);
+	    rY2 = (int )(Math.random() * 786 + 10);
+		rX3 = (int )(Math.random() * 1024 + 100);
+	    rY3 = (int )(Math.random() * 786 + 10);
+	    rX4 = (int )(Math.random() * 1024 + 100);
+	    rY4 = (int )(Math.random() * 786 + 10);
+	    rX5 = (int )(Math.random() * 1024 + 100);
+	    rY5 = (int )(Math.random() * 786 + 10);
+	    rX6 = (int )(Math.random() * 1024 + 100);
+	    rY6 = (int )(Math.random() * 786 + 10);
+	    rX7 = (int )(Math.random() * 1024 + 100);
+	    rY7 = (int )(Math.random() * 786 + 10);
+	    rX8 = (int )(Math.random() * 1024 + 100);
+	    rY8 = (int )(Math.random() * 786 + 10);
+	    rX9 = (int )(Math.random() * 1024 + 100);
+	    rY9 = (int )(Math.random() * 786 + 10);
 		t = new Timer(1000,this);
 		Container c = getContentPane();
 		//setContentPane(new  JLabel(new ImageIcon("bg.gif")));
@@ -84,29 +106,180 @@ public class ufo extends JApplet implements ActionListener{
 		g.drawRect(10, 110, 1000, 630);
 //		myLogo.paintIcon(this,g,10,110);
 		if(start==1){
-		m1.paintIcon(this,g,x,y);
-		
+		m1.paintIcon(this,g,rX1,rY1);
+		m1.paintIcon(this,g,rX2,rY2);
+		m1.paintIcon(this, g, rX3, rY3);
+		m1.paintIcon(this, g, rX4, rY4);
+		m1.paintIcon(this, g, rX5, rY5);
+		m1.paintIcon(this, g, rX6, rY6);
+		m1.paintIcon(this, g, rX7, rY7);
+		m1.paintIcon(this, g, rX8, rY8);
+		m1.paintIcon(this, g, rX9, rY9);
 		}	
 	}
 	public void fw()
 	{	
-		 x = x + xSpeed;
-		 y = y + ySpeed;
-		 if (x < xMin) {
-		 x = xMin;
-		 xSpeed = -xSpeed;
+		 rX1 = rX1 + xSpeed1;
+		 rY1 = rY1 + ySpeed1;
+		 if (rX1 < xMin1) {
+		 rX1 = xMin1;
+		 xSpeed1 = -xSpeed1;
 		 }
-		 else if (x+size > xMax) {
-		 x = xMax - size;
-		 xSpeed = -xSpeed;
+		 else if (rX1+size1 > xMax1) {
+		 rX1 = xMax1 - size1;
+		 xSpeed1 = -xSpeed1;
 		 }
-		 if (y < yMin) {
-		 y = yMin;
-		 ySpeed = -ySpeed;
+		 if (rY1 < yMin1) {
+		 rY1 = yMin1;
+		 ySpeed1 = -ySpeed1;
 		 }
-		 else if (y+size > yMax) {
-		 y = yMax - size;
-		 ySpeed = -ySpeed;
-		 } 
+		 else if (rY1+size1 > yMax1) {
+		 rY1 = yMax1 - size1;
+		 ySpeed1 = -ySpeed1;
+		 }
+		 rX2 = rX2 + xSpeed2;
+		 rY2 = rY2 + ySpeed2;
+		 if (rX2 < xMin2) {
+		 rX2 = xMin2;
+		 xSpeed2 = -xSpeed2;
+		 }
+		 else if (rX2+size2 > xMax2) {
+		 rX2 = xMax2 - size2;
+		 xSpeed2 = -xSpeed2;
+		 }
+		 if (rY2 < yMin2) {
+		 rY2 = yMin2;
+		 ySpeed2 = -ySpeed2;
+		 }
+		 else if (rY2+size2 > yMax2) {
+		 rY2 = yMax2 - size2;
+		 ySpeed2 = -ySpeed2;
+		 }
+		 rX3 = rX3 + xSpeed3;
+		 rY3 = rY3 + ySpeed3;
+		 if (rX3 < xMin3) {
+		 rX2 = xMin2;
+		 xSpeed3 = -xSpeed3;
+		 }
+		 else if (rX3+size3 > xMax3) {
+		 rX3 = xMax3 - size3;
+		 xSpeed3 = -xSpeed3;
+		 }
+		 if (rY3 < yMin3) {
+		 rY3 = yMin3;
+		 ySpeed3 = -ySpeed3;
+		 }
+		 else if (rY3+size3 > yMax3) {
+		 rY3 = yMax3 - size2;
+		 ySpeed3 = -ySpeed3;
+		 }
+		 rX4 = rX4 + xSpeed4;
+		 rY4 = rY4 + ySpeed4;
+		 if (rX4 < xMin4) {
+		 rX4 = xMin4;
+		 xSpeed4 = -xSpeed4;
+		 }
+		 else if (rX4+size4 > xMax4) {
+		 rX4 = xMax4 - size4;
+		 xSpeed4 = -xSpeed4;
+		 }
+		 if (rY4 < yMin4) {
+		 rY4 = yMin4;
+		 ySpeed4 = -ySpeed4;
+		 }
+		 else if (rY4+size4 > yMax4) {
+		 rY4 = yMax4 - size4;
+		 ySpeed4 = -ySpeed4;
+		 }
+		 rX5 = rX5 + xSpeed5;
+		 rY5 = rY5 + ySpeed5;
+		 if (rX5 < xMin5) {
+		 rX5 = xMin5;
+		 xSpeed5 = -xSpeed5;
+		 }
+		 else if (rX5+size5 > xMax5) {
+		 rX5 = xMax5 - size5;
+		 xSpeed5 = -xSpeed5;
+		 }
+		 if (rY5 < yMin5) {
+		 rY5 = yMin5;
+		 ySpeed5 = -ySpeed5;
+		 }
+		 else if (rY5+size5 > yMax5) {
+		 rY5 = yMax5 - size5;
+		 ySpeed5 = -ySpeed5;
+		 }
+		 rX6 = rX6 + xSpeed5;
+		 rY6 = rY6 + ySpeed5;
+		 if (rX6 < xMin6) {
+		 rX6 = xMin6;
+		 xSpeed6 = -xSpeed6;
+		 }
+		 else if (rX6+size6 > xMax6) {
+		 rX6 = xMax6 - size6;
+		 xSpeed6 = -xSpeed6;
+		 }
+		 if (rY6 < yMin6) {
+		 rY6 = yMin6;
+		 ySpeed6 = -ySpeed6;
+		 }
+		 else if (rY6+size6 > yMax6) {
+		 rY6 = yMax6 - size6;
+		 ySpeed6 = -ySpeed6;
+		 }
+		 rX7 = rX7 + xSpeed7;
+		 rY7 = rY7 + ySpeed7;
+		 if (rX7 < xMin7) {
+		 rX7 = xMin7;
+		 xSpeed7 = -xSpeed7;
+		 }
+		 else if (rX7+size7 > xMax7) {
+		 rX6 = xMax7 - size7;
+		 xSpeed7 = -xSpeed7;
+		 }
+		 if (rY7 < yMin7) {
+		 rX7 = yMin7;
+		 ySpeed7 = -ySpeed7;
+		 }
+		 else if (rY7+size7 > yMax7) {
+		 rY6 = yMax7 - size7;
+		 ySpeed7 = -ySpeed7;
+		 }
+		 rX8 = rX8 + xSpeed8;
+		 rY8 = rY8 + ySpeed8;
+		 if (rX8 < xMin8) {
+		 rX8 = xMin8;
+		 xSpeed8 = -xSpeed8;
+		 }
+		 else if (rX8+size8 > xMax8) {
+		 rX8 = xMax8 - size8;
+		 xSpeed8 = -xSpeed8;
+		 }
+		 if (rY8 < yMin8) {
+		 rY8 = yMin8;
+		 ySpeed8 = -ySpeed8;
+		 }
+		 else if (rY8+size8 > yMax8) {
+		 rY8 = yMax8 - size8;
+		 ySpeed8 = -ySpeed8;
+		 }
+		 rX9 = rX9 + xSpeed9;
+		 rY9 = rY9 + ySpeed9;
+		 if (rX9 < xMin9) {
+		 rX9 = xMin9;
+		 xSpeed9 = -xSpeed9;
+		 }
+		 else if (rX9+size9 > xMax9) {
+		 rX9 = xMax9 - size9;
+		 xSpeed9 = -xSpeed9;
+		 }
+		 if (rY9 < yMin9) {
+		 rY9 = yMin9;
+		 ySpeed9 = -ySpeed9;
+		 }
+		 else if (rY9+size9 > yMax9) {
+		 rY9 = yMax9 - size9;
+		 ySpeed9 = -ySpeed9;
+		 }
 	}
 }
