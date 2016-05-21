@@ -8,6 +8,7 @@ public class ufo extends JApplet implements ActionListener{
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
 	int start = 0 , x=0 , randomX=0 , randomY=0 , xMax=780 , xMin =1, xSpeed=80 , size = 40;
+	int y=0 , ySpeed = 0 , yMax = 1024 , yMin =1; 
 	private ImageIcon m1;
 	private Timer t ;
 	//Picture image1;
@@ -83,13 +84,14 @@ public class ufo extends JApplet implements ActionListener{
 		g.drawRect(10, 110, 1000, 630);
 //		myLogo.paintIcon(this,g,10,110);
 		if(start==1){
-		m1.paintIcon(this,g,x,randomY);
+		m1.paintIcon(this,g,x,y);
 		
 		}	
 	}
 	public void fw()
-	{
+	{	
 		 x = x + xSpeed;
+		 y = y + ySpeed;
 		 if (x < xMin) {
 		 x = xMin;
 		 xSpeed = -xSpeed;
@@ -98,5 +100,13 @@ public class ufo extends JApplet implements ActionListener{
 		 x = xMax - size;
 		 xSpeed = -xSpeed;
 		 }
+		 if (y < yMin) {
+		 y = yMin;
+		 ySpeed = -ySpeed;
+		 }
+		 else if (y+size > yMax) {
+		 y = yMax - size;
+		 ySpeed = -ySpeed;
+		 } 
 	}
 }
