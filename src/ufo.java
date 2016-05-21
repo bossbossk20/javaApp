@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 public class ufo extends JApplet implements ActionListener{
-	int Times =40 ;
+	private static int Times =40;
 	JButton btnPlayGame,btnStopGame,btnQuit;
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
@@ -119,6 +119,9 @@ public class ufo extends JApplet implements ActionListener{
 	}
 	public void fw()
 	{	
+		 Times--;
+		 FTime.setText(Times+"");
+		 System.out.println(Times);
 		 rX1 = rX1 + xSpeed1;
 		 rY1 = rY1 + ySpeed1;
 		 if (rX1 < xMin1) {
