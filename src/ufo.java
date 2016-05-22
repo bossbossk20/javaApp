@@ -151,6 +151,7 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		FScore.setEditable(false);//‰¡Ë„ÀÈ„ Ë§Ë“‰¥È
 		FScore.setBounds(600, 72, 100, 25);
 		c.add(FScore);
+		
 	}
 	public void paint(Graphics g)
 	{
@@ -271,7 +272,7 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 			 start = 0;
 			 FTime.setText("");
 			 JOptionPane.showMessageDialog(null, "Time Out You lose game");
-			 
+			 btnPlayGame.setEnabled(true);
 		 }
 		 FTime.setText(Times+"");
 		 rX1 = rX1 + xSpeed1;
@@ -644,6 +645,7 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
+		
 		if(e.getX()>=rX1 && e.getX()<=(rX1+70) && e.getY()>=rY1 && e.getY()<=(rY1+60))
 		{
 		
@@ -652,6 +654,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active1=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		
 		
@@ -666,6 +671,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active2=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		
 		}
@@ -679,6 +687,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active3=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX4&&e.getX()<=(rX4+70)&&e.getY()>=rY4&&e.getY()<=(rY4+60))
@@ -691,6 +702,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active4=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX5&&e.getX()<=(rX5+70)&&e.getY()>=rY5&&e.getY()<=(rY5+60))
@@ -703,6 +717,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active5=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX6&&e.getX()<=(rX6+70)&&e.getY()>=rY6&&e.getY()<=(rY6+60))
@@ -715,6 +732,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active6=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX7&&e.getX()<=(rX7+70)&&e.getY()>=rY7&&e.getY()<=(rY7+60))
@@ -727,6 +747,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active7=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX8&&e.getX()<=(rX8+70)&&e.getY()>=rY8&&e.getY()<=(rY8+60))
@@ -739,6 +762,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active8=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX9 && e.getX()<=(rX9+70) && e.getY()>=rY9 && e.getY()<=(rY9+60))
@@ -749,6 +775,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active9=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX10&&e.getX()<=(rX10+70)&&e.getY()>=rY10&&e.getY()<=(rY10+60))
@@ -761,6 +790,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active10=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX11&&e.getX()<=(rX11+70)&&e.getY()>=rY11&&e.getY()<=(rY11+60))
@@ -772,72 +804,81 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active11=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX12&&e.getX()<=(rX12+70)&&e.getY()>=rY12&&e.getY()<=(rY12+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r12");
-		rX12=6000;
-		rY12=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active12=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX13&&e.getX()<=(rX13+70)&&e.getY()>=rY13&&e.getY()<=(rY13+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r13");
-		rX13=6000;
-		rY13=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active13=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX14&&e.getX()<=(rX14+70)&&e.getY()>=rY14&&e.getY()<=(rY14+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r14");
-		rX14=6000;
-		rY14=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active14=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX15&&e.getX()<=(rX15+70)&&e.getY()>=rY15&&e.getY()<=(rY15+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r15");
-		rX15=6000;
-		rY15=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active15=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX16&&e.getX()<=(rX16+70)&&e.getY()>=rY16&&e.getY()<=(rY16+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r11");
-		rX16=6000;
-		rY16=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active16=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX17&&e.getX()<=(rX17+70)&&e.getY()>=rY17&&e.getY()<=(rY17+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r17");
-		rX17=6000;
-		rY17=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active17=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX18&&e.getX()<=(rX18+70)&&e.getY()>=rY18&&e.getY()<=(rY18+60))
@@ -849,28 +890,33 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active18=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX19&&e.getX()<=(rX19+70)&&e.getY()>=rY19&&e.getY()<=(rY19+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r19");
-		rX19=6000;
-		rY19=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active19=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 		if(e.getX()>=rX20&&e.getX()<=(rX20+70)&&e.getY()>=rY20&&e.getY()<=(rY20+60))
 		{
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r20");
-		rX20=6000;
-		rY20=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active20=1;
+		if (u1.getScore()==20){
+			 JOptionPane.showMessageDialog(null, "You win");
+		}
 		repaint();
 		}
 	}
