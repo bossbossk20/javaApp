@@ -113,7 +113,7 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 	    rX20 = (int )(Math.random() * 1024 + 100);
 	    rY20 = (int )(Math.random() * 786 + 10);
 	    addMouseListener(this);
-		t = new Timer(600,this);
+		t = new Timer(100,this);
 		Container c = getContentPane();
 		//setContentPane(new  JLabel(new ImageIcon("bg.gif")));
 		getContentPane().setLayout(null); 
@@ -272,6 +272,7 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 			 start = 0;
 			 FTime.setText("");
 			 JOptionPane.showMessageDialog(null, "Time Out You lose game");
+			 Times=40;
 			 btnPlayGame.setEnabled(true);
 		 }
 		 FTime.setText(Times+"");
