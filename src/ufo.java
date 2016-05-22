@@ -6,13 +6,15 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 public class ufo extends JApplet implements ActionListener,MouseListener{
-	private static int Times =40;
+	 int Times =40;
 	JButton btnPlayGame,btnStopGame,btnQuit;
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
 	ufoClass u1;
+	
 	int start = 0 , x=0 , rX1=0 , rY1=0 , xMax1=980 , xMin1 =10, xSpeed1=80 , size1 = 40;
 	int y=0 , ySpeed1 = 80 , yMax1 = 730 , yMin1 =110; 
+	
 	int rX2=0 , rY2=0 , xMax2=980 , xMin2 =10 , yMin2=110, yMax2=730 , xSpeed2=80, ySpeed2=80 , size2 = 40 ;
 	int rX3=0 , rY3=0 , xMax3=980 , xMin3 =10 , yMin3=110, yMax3=730 , xSpeed3=80, ySpeed3=80 , size3 = 40 ;
 	int rX4=0 , rY4=0 , xMax4=980 , xMin4 =10 , yMin4=110, yMax4=730 , xSpeed4=80, ySpeed4=80 , size4 = 40 ;
@@ -41,9 +43,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnPlayGame)
 		{
-			btnPlayGame.setVisible(true);//´ËÕπ
-//			btnStopGame.setVisible(false);
-			btnQuit.setVisible(true);
+			btnPlayGame.setEnabled(false);
+			btnStopGame.setEnabled(true);
+			
 			start =1;
 			System.out.println("god");
 			t.start();
@@ -51,6 +53,21 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 			fw();
 			repaint();
 		}
+		if(e.getSource() == btnStopGame)
+		{
+			btnPlayGame.setEnabled(true);
+			btnStopGame.setEnabled(false);
+			t.stop();
+			start=0;
+			Times =40;
+			FTime.setText("");
+			
+		}
+		if(e.getSource()== btnQuit)
+		{
+			System.exit(0);
+		}
+		
 	}
 	public void init()
 	{
@@ -100,35 +117,39 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		Container c = getContentPane();
 		//setContentPane(new  JLabel(new ImageIcon("bg.gif")));
 		getContentPane().setLayout(null); 
+		setSize(1024,768);
 		m1 = new ImageIcon("ufo.png");
 		btnPlayGame = new JButton("Play Game");
 		btnPlayGame.addActionListener(this);
-		btnPlayGame.setBounds(300, 10, 100, 25);
+		btnPlayGame.setBounds(300, 30, 100, 25);
 		c.add(btnPlayGame);
+		
 		btnStopGame = new JButton("Stop Game");
-		btnStopGame.setBounds(420, 10, 100, 25);
+		btnStopGame.addActionListener(this);
+		btnStopGame.setBounds(420, 30, 100, 25);
 		c.add(btnStopGame);
 		
 		btnQuit = new JButton("Quit");
-		btnQuit.setBounds(540, 10, 100, 25); 
+		btnQuit.addActionListener(this);
+		btnQuit.setBounds(540, 30, 100, 25); 
 		c.add(btnQuit);
 		
 		txtTime = new JLabel("Time : ");
-		txtTime.setBounds(150, 40, 100, 25);
+		txtTime.setBounds(150, 70, 100, 25);
 		c.add(txtTime);
 		
 		FTime = new JTextField(10);
 		FTime.setEditable(false);//‰¡Ë„ÀÈ„ Ë§Ë“‰¥È
-		FTime.setBounds(200, 40, 100, 25);
+		FTime.setBounds(200, 72, 100, 25);
 		c.add(FTime);
 		
 		txtScore = new JLabel("Score :");
-		txtScore.setBounds(550, 40, 100, 25);
+		txtScore.setBounds(550, 70, 100, 25);
 		c.add(txtScore);
 		
 		FScore = new JTextField(10);
 		FScore.setEditable(false);//‰¡Ë„ÀÈ„ Ë§Ë“‰¥È
-		FScore.setBounds(600, 40, 100, 25);
+		FScore.setBounds(600, 72, 100, 25);
 		c.add(FScore);
 	}
 	public void paint(Graphics g)
@@ -138,8 +159,9 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		g.drawRect(10, 70, 1000, 30);
 		g.setColor(Color.BLUE);
 		g.drawRect(10, 110, 1000, 630);
-		myLogo.paintIcon(this,g,10,110);
+		
 		if(start==1){
+			myLogo.paintIcon(this,g,10,110);
 			if (active1==0){
 				m1.paintIcon(this,g,rX1,rY1);
 			}else {
@@ -243,6 +265,14 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 	public void fw()
 	{	
 		 Times--;
+		 if	(Times==0) 
+		 {
+			 t.stop();
+			 start = 0;
+			 FTime.setText("");
+			 JOptionPane.showMessageDialog(null, "Time Out You lose game");
+			 
+		 }
 		 FTime.setText(Times+"");
 		 rX1 = rX1 + xSpeed1;
 		 rY1 = rY1 + ySpeed1;
@@ -614,13 +644,11 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getX()>=rX1&&e.getX()<=(rX1+70)&&e.getY()>=rY1&&e.getY()<=(rY1+60))
+		if(e.getX()>=rX1 && e.getX()<=(rX1+70) && e.getY()>=rY1 && e.getY()<=(rY1+60))
 		{
 		
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r1");
-		rX1=6000;
-		rY1=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active1=1;
@@ -713,13 +741,11 @@ public class ufo extends JApplet implements ActionListener,MouseListener{
 		active8=1;
 		repaint();
 		}
-		if(e.getX()>=rX9&&e.getX()<=(rX9+70)&&e.getY()>=rY9&&e.getY()<=(rY9+60))
+		if(e.getX()>=rX9 && e.getX()<=(rX9+70) && e.getY()>=rY9 && e.getY()<=(rY9+60))
 		{
 		
 		System.out.print(e.getX()+" "+e.getY());
 		System.out.print("active r9");
-		rX9=6000;
-		rY9=6000;
 		u1.plusScore(1);
 		FScore.setText(u1.getScore()+"");
 		active9=1;

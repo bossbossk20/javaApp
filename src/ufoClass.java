@@ -16,5 +16,6 @@ public class ufoClass {
 	public int getScore(){
 		return score;
 	}
+	
 
 }
