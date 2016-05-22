@@ -1,12 +1,16 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.*;
-public class ufo extends JApplet implements ActionListener{
+public class ufo extends JApplet implements ActionListener,MouseListener{
 	private static int Times =40;
 	JButton btnPlayGame,btnStopGame,btnQuit;
 	JLabel txtTime,txtScore;
 	JTextField FTime,FScore;
+	int score = 0;
 	int start = 0 , x=0 , rX1=0 , rY1=0 , xMax1=980 , xMin1 =10, xSpeed1=80 , size1 = 40;
 	int y=0 , ySpeed1 = 80 , yMax1 = 730 , yMin1 =110; 
 	int rX2=0 , rY2=0 , xMax2=980 , xMin2 =10 , yMin2=110, yMax2=730 , xSpeed2=80, ySpeed2=80 , size2 = 40 ;
@@ -18,6 +22,7 @@ public class ufo extends JApplet implements ActionListener{
 	int rX8=0 , rY8=0 , xMax8=980 , xMin8 =10 , yMin8=110, yMax8=730 , xSpeed8=80, ySpeed8=80 , size8 = 40 ;
 	int rX9=0 , rY9=0 , xMax9=980 , xMin9 =10 , yMin9=110, yMax9=730 , xSpeed9=80, ySpeed9=80 , size9 = 40 ;
 	private ImageIcon m1;
+	int active1 = 0,active2 = 0,active3 = 0,active4 = 0,active5 = 0,active6 = 0,active7 = 0,active8 = 0,active9 = 0;
 	private Timer t;
 	//Picture image1;
 	ImageIcon myLogo = new ImageIcon("bg.gif");
@@ -60,7 +65,8 @@ public class ufo extends JApplet implements ActionListener{
 	    rY8 = (int )(Math.random() * 786 + 10);
 	    rX9 = (int )(Math.random() * 1024 + 100);
 	    rY9 = (int )(Math.random() * 786 + 10);
-		t = new Timer(1000,this);
+	    addMouseListener(this);
+		t = new Timer(800,this);
 		Container c = getContentPane();
 		//setContentPane(new  JLabel(new ImageIcon("bg.gif")));
 		getContentPane().setLayout(null); 
@@ -68,9 +74,7 @@ public class ufo extends JApplet implements ActionListener{
 		btnPlayGame = new JButton("Play Game");
 		btnPlayGame.addActionListener(this);
 		btnPlayGame.setBounds(300, 10, 100, 25);
-
 		c.add(btnPlayGame);
-		
 		btnStopGame = new JButton("Stop Game");
 		btnStopGame.setBounds(420, 10, 100, 25);
 		c.add(btnStopGame);
@@ -106,40 +110,76 @@ public class ufo extends JApplet implements ActionListener{
 		g.drawRect(10, 110, 1000, 630);
 //		myLogo.paintIcon(this,g,10,110);
 		if(start==1){
-		m1.paintIcon(this,g,rX1,rY1);
-		m1.paintIcon(this,g,rX2,rY2);
-		m1.paintIcon(this, g, rX3, rY3);
-		m1.paintIcon(this, g, rX4, rY4);
-		m1.paintIcon(this, g, rX5, rY5);
-		m1.paintIcon(this, g, rX6, rY6);
-		m1.paintIcon(this, g, rX7, rY7);
-		m1.paintIcon(this, g, rX8, rY8);
-		m1.paintIcon(this, g, rX9, rY9);
+			if (active1==0){
+				m1.paintIcon(this,g,rX1,rY1);
+			}else {
+				
+			}
+			if (active2==0){
+				m1.paintIcon(this,g,rX2,rY2);
+			}else {
+				
+			}
+			if (active3==0){
+				m1.paintIcon(this, g, rX3, rY3);
+			}else{
+				
+			}
+			if (active4==0){
+				m1.paintIcon(this, g, rX4, rY4);
+			}else{
+				
+			}
+			if (active5==0){
+				m1.paintIcon(this, g, rX5, rY5);
+			}
+			if (active6==0){
+				m1.paintIcon(this, g, rX6, rY6);
+			}else{
+				
+			}
+			if (active7==0) {
+				m1.paintIcon(this, g, rX7, rY7);
+			}else{
+				
+			}
+			if (active8==0){
+				m1.paintIcon(this, g, rX8, rY8);
+			}else {
+				
+			}
+			if (active9==0){
+				m1.paintIcon(this, g, rX9, rY9);
+			}else {
+				
+			}	
 		}	
 	}
 	public void fw()
 	{	
 		 Times--;
 		 FTime.setText(Times+"");
-		 System.out.println(Times);
+//		 System.out.println(Times);
 		 rX1 = rX1 + xSpeed1;
 		 rY1 = rY1 + ySpeed1;
-		 if (rX1 < xMin1) {
-		 rX1 = xMin1;
-		 xSpeed1 = -xSpeed1;
-		 }
-		 else if (rX1+size1 > xMax1) {
-		 rX1 = xMax1 - size1;
-		 xSpeed1 = -xSpeed1;
-		 }
-		 if (rY1 < yMin1) {
-		 rY1 = yMin1;
-		 ySpeed1 = -ySpeed1;
-		 }
-		 else if (rY1+size1 > yMax1) {
-		 rY1 = yMax1 - size1;
-		 ySpeed1 = -ySpeed1;
-		 }
+			 if (rX1 < xMin1) {
+				 rX1 = xMin1;
+				 xSpeed1 = -xSpeed1;
+				 }
+				 else if (rX1+size1 > xMax1) {
+				 rX1 = xMax1 - size1;
+				 xSpeed1 = -xSpeed1;
+				 }
+				 if (rY1 < yMin1) {
+				 rY1 = yMin1;
+				 ySpeed1 = -ySpeed1;
+				 }
+				 else if (rY1+size1 > yMax1) {
+				 rY1 = yMax1 - size1;
+				 ySpeed1 = -ySpeed1;
+//				 m1.paintIcon(c, g, rX1, rY1);
+				 }
+		
 		 rX2 = rX2 + xSpeed2;
 		 rY2 = rY2 + ySpeed2;
 		 if (rX2 < xMin2) {
@@ -212,8 +252,8 @@ public class ufo extends JApplet implements ActionListener{
 		 rY5 = yMax5 - size5;
 		 ySpeed5 = -ySpeed5;
 		 }
-		 rX6 = rX6 + xSpeed5;
-		 rY6 = rY6 + ySpeed5;
+		 rX6 = rX6 + xSpeed6;
+		 rY6 = rY6 + ySpeed6;
 		 if (rX6 < xMin6) {
 		 rX6 = xMin6;
 		 xSpeed6 = -xSpeed6;
@@ -237,7 +277,7 @@ public class ufo extends JApplet implements ActionListener{
 		 xSpeed7 = -xSpeed7;
 		 }
 		 else if (rX7+size7 > xMax7) {
-		 rX6 = xMax7 - size7;
+		 rX7 = xMax7 - size7;
 		 xSpeed7 = -xSpeed7;
 		 }
 		 if (rY7 < yMin7) {
@@ -283,6 +323,141 @@ public class ufo extends JApplet implements ActionListener{
 		 else if (rY9+size9 > yMax9) {
 		 rY9 = yMax9 - size9;
 		 ySpeed9 = -ySpeed9;
+		 
 		 }
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(e.getX()>=rX1&&e.getX()<=(rX1+70)&&e.getY()>=rY1&&e.getY()<=(rY1+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r1");
+		rX1=6000;
+		rY1=6000;
+		score++;
+		FScore.setText(score+"");
+		active1=1;
+		repaint();
+		
+		
+		}
+		if(e.getX()>=rX2&e.getX()<=(rX2+70)&&e.getY()>=rY2&&e.getY()<=(rY2+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r2");
+		rX2=6000;
+		rY2=6000;
+		score++;
+		FScore.setText(score+"");
+		active2=1;
+		repaint();
+		
+		}
+		if(e.getX()>=rX3&&e.getX()<=(rX3+70)&&e.getY()>=rY3&&e.getY()<=(rY3+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r3");
+		rX3=6000;
+		rY3=6000;
+		score++;
+		FScore.setText(score+"");
+		active3=1;
+		repaint();
+		}
+		if(e.getX()>=rX4&&e.getX()<=(rX4+70)&&e.getY()>=rY4&&e.getY()<=(rY4+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r4");
+		rX4=6000;
+		rY4=6000;
+		score++;
+		FScore.setText(score+"");
+		active4=1;
+		repaint();
+		}
+		if(e.getX()>=rX5&&e.getX()<=(rX5+70)&&e.getY()>=rY5&&e.getY()<=(rY5+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r5");
+		rX5=6000;
+		rY5=6000;
+		score++;
+		FScore.setText(score+"");
+		active5=1;
+		repaint();
+		}
+		if(e.getX()>=rX6&&e.getX()<=(rX6+70)&&e.getY()>=rY6&&e.getY()<=(rY6+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r6");
+		rX6=6000;
+		rY6=6000;
+		score++;
+		FScore.setText(score+"");
+		active6=1;
+		repaint();
+		}
+		if(e.getX()>=rX7&&e.getX()<=(rX7+70)&&e.getY()>=rY7&&e.getY()<=(rY7+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r3");
+		rX7=6000;
+		rY7=6000;
+		score++;
+		FScore.setText(score+"");
+		active7=1;
+		repaint();
+		}
+		if(e.getX()>=rX8&&e.getX()<=(rX8+70)&&e.getY()>=rY8&&e.getY()<=(rY8+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r8");
+		rX8=6000;
+		rY8=6000;
+		score++;
+		FScore.setText(score+"");
+		active8=1;
+		repaint();
+		}
+		if(e.getX()>=rX9&&e.getX()<=(rX9+70)&&e.getY()>=rY9&&e.getY()<=(rY9+60))
+		{
+		
+		System.out.print(e.getX()+" "+e.getY());
+		System.out.print("active r9");
+		rX9=6000;
+		rY9=6000;
+		score++;
+		FScore.setText(score+"");
+		active9=1;
+		repaint();
+		}
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
